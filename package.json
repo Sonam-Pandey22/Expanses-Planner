@@ -1,0 +1,22 @@
+{
+  "name": "expanse-planner",
+  "version": "1.0.0",
+  "private": true,
+  "engines": { "node": ">=22.12.0" },
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n API,WEB -c cyan,green \"npm run dev -w backend\" \"npm run dev -w frontend\"",
+    "build": "npm run build -w frontend",
+    "typecheck": "npm run typecheck -w frontend",
+    "test": "npm run test -w backend",
+    "test:e2e": "playwright test",
+    "start": "concurrently -k \"npm run start -w backend\" \"npm run start -w frontend\""
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "concurrently": "^9.2.1"
+  }
+}
